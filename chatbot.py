@@ -44,7 +44,7 @@ class ChatBot:
         self.send = Button(btn_frame, text="Send>>", command=self.send, font=("arial", 15, "bold"), width=8, bg="green")
         self.send.grid(row=0, column=2, padx=5, sticky=W)
 
-        self.clear = Button(btn_frame, text="Clear", command=self.clear, font=("arial", 15, "bold"), width=8, bg="RED", fg="WHITE")
+        self.clear = Button(btn_frame, text="Clear", command=self.clear_function, font=("arial", 15, "bold"), width=8, bg="RED", fg="WHITE")
         self.clear.grid(row=1, column=0, padx=5, sticky=W)
 
 
