@@ -3,7 +3,6 @@ from tkinter import ttk
 from PIL import Image,ImageTk 
 from tkinter import messagebox
 import mysql.connector
-import cv2
 
 
 class Attendance:
@@ -128,13 +127,27 @@ class Attendance:
         right_Frame.place(x=740, y=10, width=720, height= 550)
 
         table_frame = Frame(right_Frame, bd=2, relief=RIDGE, bg="white")
-        table_frame.place(x=5, y=5, width=705, height=400)
+        table_frame.place(x=5, y=5, width=705, height=455)
 
         scroll_x = ttk.Scrollbar(table_frame, orient=HORIZONTAL)
         scroll_y = ttk.Scrollbar(table_frame, orient=VERTICAL)
 
-        self.AttendanceReportTable = ttk.Treeview(table_frame, column=("id", "roll", "name", "department", "time", "date", "attendance"))
+        self.AttendanceReportTable = ttk.Treeview(table_frame, column=("id", "roll", "name", "department", "time", "date", "attendance"), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
+        scroll_x.pack(side=BOTTOM, fill=X)
+        scroll_y.pack(side=RIGHT, fill=Y)
+        scroll_x.config(command=self.AttendanceReportTable.xview)
+        scroll_y.config(command=self.AttendanceReportTable.yview)
 
+        self.AttendanceReportTable.heading("id", text="Attendance ID")
+        self.AttendanceReportTable.heading("roll", text="Roll No")
+        self.AttendanceReportTable.heading("name", text="Name")
+        self.AttendanceReportTable.heading("department", text="Department")
+        self.AttendanceReportTable.heading("time", text="Time")
+        self.AttendanceReportTable.heading("date", text="Date")
+        self.AttendanceReportTable.heading("attendance", text="Attendance")
+
+        self.AttendanceReportTable["show"] = "headings"
+        self.AttendanceReportTable.pack(fill=BOTH, expand=1)
 
 
 
