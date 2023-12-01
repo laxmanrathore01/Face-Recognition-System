@@ -24,11 +24,11 @@ class ChatBot:
         title_lbl.pack(side=TOP)
 
 
-        self.scroll_y = ttk.Scrollbar(main_frame, orient=VERTICAL)
+        scroll_y = ttk.Scrollbar(main_frame, orient=VERTICAL)
 
         self.text = Text(main_frame, width=65, height=20, bd=3, relief=RAISED, font=("arial", 14), yscrollcommand=scroll_y.set)
         scroll_y.pack(side=RIGHT, fill=Y)
-        scroll_y.config(command=self.scroll_y.yview)
+        scroll_y.config(command=self.text.yview)
         self.text.pack()
 
         btn_frame = Frame(self.root, bd=4, bg="white", width=730)
