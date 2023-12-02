@@ -5,6 +5,9 @@ import os
 from student import Student
 from train import Train
 from face_recognition import Face_Recognition
+from chatbot import ChatBot
+from attendance import Attendance
+from developer import Developer
 
 
 class Face_Recognition_System:
@@ -39,7 +42,7 @@ class Face_Recognition_System:
 
 
         # background image
-        img3 = Image.open("Images/face.png")
+        img3 = Image.open("Images/face_reco_bing.jpeg")
         img3 = img3.resize((1510,710),Image.LANCZOS)
         self.photoImg3 = ImageTk.PhotoImage(img3)
         bg_img = Label(self.root, image = self.photoImg3)
@@ -52,7 +55,7 @@ class Face_Recognition_System:
 
 
         # Student Detail button
-        img4 = Image.open("Images/Student Details.jpg")
+        img4 = Image.open("Images/Student.jpeg")
         img4 = img4.resize((220,220),Image.LANCZOS)
         self.photoImg4 = ImageTk.PhotoImage(img4)
         b1 = Button(bg_img, command=self.student_details, image=self.photoImg4, cursor="hand2")
@@ -79,27 +82,27 @@ class Face_Recognition_System:
         img6 = Image.open("Images/Attendance.png")
         img6 = img6.resize((220,220),Image.LANCZOS)
         self.photoImg6 = ImageTk.PhotoImage(img6)
-        b1 = Button(bg_img, image=self.photoImg6, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoImg6, command=self.attendance_data, cursor="hand2")
         b1.place(x=800, y=100, width=220, height=220)
 
-        b1 = Button(bg_img, text="Attendance", cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        b1 = Button(bg_img, text="Attendance", command=self.attendance_data, cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
         b1.place(x=800, y=300, width=220, height=40)
 
 
 
         # Help Button  
-        img7 = Image.open("Images/Chatbot.png")
+        img7 = Image.open("Images/Chatbot2.jpeg")
         img7 = img7.resize((220,220),Image.LANCZOS)
         self.photoImg7 = ImageTk.PhotoImage(img7)
-        b1 = Button(bg_img, image=self.photoImg7, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoImg7, command=self.chatbot, cursor="hand2")
         b1.place(x=1100, y=100, width=220, height=220)
 
-        b1 = Button(bg_img, text="Help Desk", cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        b1 = Button(bg_img, text="Help Desk", command=self.chatbot, cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
         b1.place(x=1100, y=300, width=220, height=40)
 
 
         # Train Face Button
-        img8 = Image.open("Images/Train_Data.png")
+        img8 = Image.open("Images/faceimg_bing.jpeg")
         img8 = img8.resize((220,220),Image.LANCZOS)
         self.photoImg8 = ImageTk.PhotoImage(img8)
         b1 = Button(bg_img, image=self.photoImg8, command=self.train_data, cursor="hand2")
@@ -126,10 +129,10 @@ class Face_Recognition_System:
         img10 = Image.open("Images/Developer_Img.png")
         img10 = img10.resize((220,220),Image.LANCZOS)
         self.photoImg10 = ImageTk.PhotoImage(img10)
-        b1 = Button(bg_img, image=self.photoImg10, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoImg10, command=self.developer_data, cursor="hand2")
         b1.place(x=800, y=380, width=220, height=220)
 
-        b1 = Button(bg_img, text="Developer", cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        b1 = Button(bg_img, text="Developer", command=self.developer_data, cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
         b1.place(x=800, y=580, width=220, height=40)
 
 
@@ -138,10 +141,10 @@ class Face_Recognition_System:
         img11 = Image.open("Images/Exit Image.png")
         img11 = img11.resize((220,220),Image.LANCZOS)
         self.photoImg11 = ImageTk.PhotoImage(img11)
-        b1 = Button(bg_img, image=self.photoImg11, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoImg11, command=self.exit, cursor="hand2")
         b1.place(x=1100, y=380, width=220, height=220)
 
-        b1 = Button(bg_img, text="Exit", cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        b1 = Button(bg_img, text="Exit", command=self.exit, cursor="hand2",font=("times new roman", 15, "bold"), bg="blue", fg="white")
         b1.place(x=1100, y=580, width=220, height=40)
 
 
@@ -164,7 +167,20 @@ class Face_Recognition_System:
         self.new_window = Toplevel(self.root)
         self.app = Face_Recognition(self.new_window)
 
+    def chatbot(self):
+        self.new_window = Toplevel(self.root)
+        self.app = ChatBot(self.new_window)
 
+    def attendance_data(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Attendance(self.new_window)
+
+    def developer_data(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Developer(self.new_window)
+
+    def exit(self):
+        root.destroy()
 
     
 
