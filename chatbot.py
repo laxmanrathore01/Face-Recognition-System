@@ -161,5 +161,5 @@ class ChatBot:
 if __name__=="__main__":
     root = Tk()
     obj = ChatBot(root)
-    root.resizable(False, FALSE)
+    root.resizable(False, False)
     root.mainloop()
