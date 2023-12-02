@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk 
 from tkinter import messagebox
-import mysql.connector
 import cv2
 import os
 import numpy as np
@@ -30,12 +29,19 @@ class Train:
         b1.place(x=0, y=380, width=1530, height=60)
 
 
+        img_bottom1 = Image.open("Images/faceimg_bing.jpeg")
+        img_bottom1 = img_bottom1.resize((765,345),Image.LANCZOS)
+        self.photoImg_bottom1 = ImageTk.PhotoImage(img_bottom1)
+        f_label = Label(self.root, image = self.photoImg_bottom1)
+        f_label.place(x=0, y=440, width=765, height=345)
 
-        img_bottom = Image.open("Images/face2.jpg")
-        img_bottom = img_bottom.resize((1530,325),Image.LANCZOS)
-        self.photoImg_bottom = ImageTk.PhotoImage(img_bottom)
-        f_label = Label(self.root, image = self.photoImg_bottom)
-        f_label.place(x=0, y=440, width=1530, height=325)
+
+        img_bottom2 = Image.open("Images/robo_img_bing.jpeg")
+        img_bottom2 = img_bottom2.resize((765,345),Image.LANCZOS)
+        self.photoImg_bottom2 = ImageTk.PhotoImage(img_bottom2)
+        f_label = Label(self.root, image = self.photoImg_bottom2)
+        f_label.place(x=765, y=440, width=765, height=345)
+
 
 
     def train_classifier(self):
